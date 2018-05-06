@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pt04_Pto01</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pblTemperatura" header="Conversor de Temperatura"/>
+        <h:form id="frmTemperatura">
+            <h:panelGrid id="tblTemperatura1" columns="2">    
+                <p:outputLabel id="lblvalor" value="Ingerese Temperatura"/>
+                <p:inputText id="txtvalor" value="#{conversorTemperaturaFormBeans.conversorTemperatura.numero}" placeholder="numero"/>      
+            </h:panelGrid>            
+            <br></br>
+            <h:panelGrid id="tblTemperatura2" columns="4">
+                <p:outputLabel value="de"/>
+                <p:selectOneMenu id="enuTipoConversor1" value="#{conversorTemperaturaFormBeans.unidadOrigen}">
+                    <f:selectItem itemLabel="Celsius" itemValue="C"/>
+                    <f:selectItem itemLabel="Fahrenheit" itemValue="F"/>
+                    <f:selectItem itemLabel="Kelvin" itemValue="K"/>
+                </p:selectOneMenu>  
+                
+                <p:outputLabel value="a"/>
+                <p:selectOneMenu id="enuTipoConversor2" value="#{conversorTemperaturaFormBeans.unidadDestino}">
+                    <f:selectItem itemLabel="Celsius" itemValue="C"/>
+                    <f:selectItem itemLabel="Fahrenheit" itemValue="F"/>
+                    <f:selectItem itemLabel="Kelvin" itemValue="K"/>
+                </p:selectOneMenu>   
+            </h:panelGrid>
+            <br></br>
+            <p:commandButton id="btnConvertir" value="Convertir" update="lblResultado"/>
+            <p:outputLabel id="lblResultado"  value="El resultado es:#{conversorTemperaturaFormBeans.convertirTemperaturas()} "/>
+   
+        </h:form>
+    </h:body>
+</html>
+
