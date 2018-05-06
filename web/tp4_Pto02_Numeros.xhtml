@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:head>
+        <title>Punto 02 - Ingreso de Numeros</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlNumeros02" header="Ingreso de Numeros">
+            <h:form id="frmIngresoNumeros2">
+                <p:panelGrid id="pnlGIngresoNumeros" columns="2">
+                    <p:outputLabel id="lblNumero" value="Ingrese Numero" for="txtNumero">
+                        <p:inputText id="txtNumero" value="#{ingresoNumerosFormBean.numero.numero}" />
+                        <p:commandButton id="btnIngresoNumero" value="Guardar Numero"
+                                         actionListener="#{ingresoNumerosFormBean.agregarNumero()}"
+                                         update=":frmNumeros"/>
+                    </p:outputLabel>
+                </p:panelGrid>
+                
+             </h:form>
+                
+<p:spacer height="30"/>  
+
+<h:form id="frmNumerosC">
+    <p:commandButton id="btnCalcular" value="Calcular"
+                     actionListener="#{ingresoNumerosFormBean.calculos()}"
+                                         update=":frmNumerosC"/>
+<p:panelGrid columns="3" layout="grid">
+    <h:outputText value="Menor" /> 
+    <h:outputText value="Mayor" /> 
+    <h:outputText value="Promedio" /> 
+    
+    <h:outputText value="#{ingresoNumerosFormBean.obtenerMenor()}"  /> 
+    <h:outputText value="#{ingresoNumerosFormBean.obtenerMayor()}"  /> 
+    <h:outputText value="#{ingresoNumerosFormBean.obtenerPromedio()}" /> 
+
+</p:panelGrid>
+       
+ </h:form>
+  
+ <p:spacer height="30"/>     
+           
+   <h:form id="frmNumeros">
+       <p:dataList value="#{ingresoNumerosFormBean.numeros}" var="num" type="ordered" style="width:300px;">
+        <f:facet name="header">
+            NUMEROS INGRESADOS
+        </f:facet>
+         - #{num.numero}
+    </p:dataList>
+ 
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
