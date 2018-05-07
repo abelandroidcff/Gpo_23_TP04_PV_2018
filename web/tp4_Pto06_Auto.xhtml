@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tp4_Pto06</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlRegistroAutos" header="Registro de Autos"/>
+        <h:form id="frmAuto">
+            <p:commandButton id="btnListarAuto" value="Listar Auto"
+                             actionListener="#{autoFormBeans.listarAuto()}"
+                                 update=":frmAuto"/>
+            <h:panelGrid id="tblAuto" columns="5">
+                <p:dataTable id="tblRegistroAutos" value="#{autoFormBeans.autos}" var="a" rendered="#{autoFormBeans.autos.size()> 0 eq true}">
+                <p:column headerText="Patente">
+                    <p:outputLabel value="#{a.patente}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{a.marca}"/>
+                </p:column>    
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{a.modelo}"/>
+                </p:column>
+                <p:column headerText="Color">
+                    <p:outputLabel value="#{a.color}"/>
+                </p:column>
+                <p:column headerText="Combustible">
+                    <p:outputLabel value="#{a.tipoCombustible}"/> 
+                </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+            
+        </h:form>
+        <h:form id="frmdialog">
+            <p:commandButton value="Editar Autos" onclick="PF('dlg').show();"/>
+            <p:dialog id="dialog" widgetVar="dlg" header="Modificar Autos">
+                <h:panelGrid id="pnlDato" columns="1">
+                    <p:outputLabel id="lblDato" value="Indique posicion del Auto a Modificar" for="txtDato"/>
+                    <p:inputText id="txtDato" value="#{autoFormBeans.dato}" required="true">
+                    <f:validateLongRange for="txtDato" minimum="1" maximum="5"></f:validateLongRange>
+                    </p:inputText>
+                    <p:message for="txtDato"/>    
+                        
+                    <p:commandButton id="btnEnviar" value="Enviar Dato"
+                                     actionListener="#{autoFormBeans.dato}"/>
+                    </h:panelGrid>
+                    <h:panelGrid id="tblNuevoAuto" columns="3">
+                <p:outputLabel id="lblPatente" value="Patente" for="txtPatente"/>
+                <p:inputText id="txtPatente" value="#{autoFormBeans.auto.patente}" required="true"/>
+                <p:message for="txtPatente"/> 
+                <p:outputLabel id="lblMarca" value="Marca" for="txtMarca"/>
+                <p:inputText id="txtMarca" value="#{autoFormBeans.auto.marca}" required="true"/>
+                <p:message for="txtMarca"/> 
+                <p:outputLabel id="lblModelo" value="Modelo" for="txtModelo"/>
+                <p:inputText id="txtModelo" value="#{autoFormBeans.auto.modelo}" required="true"/> 
+                <p:message for="txtModelo"/>
+                <p:outputLabel id="lblColor" value="Color" for="txtColor"/>
+                <p:inputText id="txtColor" value="#{autoFormBeans.auto.color}" required="true"/>  
+                <p:message for="txtColor"/>
+                <p:outputLabel id="lblCombustible" value="Combustible" for="txtCombustible"/>
+                <p:inputText id="txtCombustible" value="#{autoFormBeans.auto.tipoCombustible}" required="true"/>
+                <p:message for="txtCombustible"/>
+                <p:commandButton id="btnEditarAuto" value="editarAuto"
+                                 actionListener="#{autoFormBeans.editarAuto()}"
+                                 update=":frmdialog"/>
+            </h:panelGrid>
+            
+            </p:dialog>
+            <h:panelGrid id="tblAuto" columns="5">
+                <p:dataTable id="tblRegistroAutos" value="#{autoFormBeans.autos}" var="a" rendered="#{autoFormBeans.autos.size()> 0 eq true}">
+                <p:column headerText="Patente">
+                    <p:outputLabel value="#{a.patente}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{a.marca}"/>
+                </p:column>    
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{a.modelo}"/>
+                </p:column>
+                <p:column headerText="Color">
+                    <p:outputLabel value="#{a.color}"/>
+                </p:column>
+                <p:column headerText="Combustible">
+                    <p:outputLabel value="#{a.tipoCombustible}"/> 
+                </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+            
+        </h:form>
+        
+    </h:body>
+</html>
+
