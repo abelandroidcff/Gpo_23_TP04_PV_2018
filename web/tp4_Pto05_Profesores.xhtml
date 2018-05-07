@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title> Registro de Profesores </title>
+    </h:head>
+    <h:body>
+        <h:form id="frmRegistroProfesor">
+            <p:messages id="mensaje" autoUpdate="true" />
+
+            <p:panel id="pnlRegistroProfesor" header="         Registro de Profesores " style=" width:600px" />
+            <p:spacer height="30"/> 
+            <p:fieldset legend="Ingresos de Datos Personales de Profesores">
+                <p:panelGrid columns="3" id="pnlProfesores" >
+                    <p:outputLabel for="txtLegajo" value="Legajo " />
+                    <p:inputText id="txtLegajo" value="#{profesorFormBean.profesor.legajo}" 
+                                 required="true" requiredMessage="Legajo: Debe Ingresar un numero entre 1 y 6 caracteres" 
+                                 style=" width:100px" maxlength="6" />
+
+                    
+                    
+                    
+                    
+                    
+                    <p:message for="txtLegajo"/>
+
+                    <p:outputLabel for="txtApellido" value="Apellido " />
+                    <p:inputText id="txtApellido" value="#{profesorFormBean.profesor.apellido}" 
+                                 required="true" requiredMessage="Apellido: Error de Validacion; Debe Ingresar un apellido" 
+                                 style=" width:300px" maxlength="20" />
+                    <p:message for="txtApellido"/>
+
+                    <p:outputLabel for="txtNombre" value="Nombres " />
+                    <p:inputText id="txtNombre" value="#{profesorFormBean.profesor.nombre}" 
+                                 required="true" requiredMessage="Nombre: Error de Validacion; Debe Ingresar un nombre" 
+                                 style=" width:300px" maxlength="25"/>
+                    <p:message for="txtNombre"/>
+
+                    <p:outputLabel for="rdbSexo" value="Sexo " />
+                    <p:selectOneRadio id="rdbSexo" value="#{profesorFormBean.opcionSexo}" 
+                                      required="true" 
+                                      requiredMessage="Sexo: Error de Validacion; Indique el sexo">
+                        <p:message for="rdbSexo"/>
+                        <f:selectItem itemValue="M" itemLabel="MASCULINO" />
+                        <f:selectItem itemValue="F" itemLabel="FEMENINO" />           
+                    </p:selectOneRadio>
+
+                </p:panelGrid>
+                <p:spacer height="30"/> 
+                <p:commandButton value="Guardar" icon="ui-icon-check" 
+                                 actionListener="#{profesorFormBean.guardarProfesores()}"
+                                 update="frmRegistroProfesor">
+                </p:commandButton> 
+
+
+                <p:commandButton value="Mostrar" icon="ui-icon-circle-zoomin"  id="btnMostrarP"
+                                 actionListener="#{profesorFormBean.profesor}" update="dtTblProf"  
+                                 onclick="PF('dlgProf').show();" type="button"
+                               
+                                 >
+                </p:commandButton> 
+
+
+
+
+                <p:dialog header=" Profesores " resizable="false" id="dlgMostrarP" widgetVar="dlgProf"
+                          minimizable="true" maximizable="true" style=" width:1000px"
+                          showEffect="fade" hideEffect="explode" modal="true" >
+
+
+                <p:dataTable id="dtTblProf" value="#{profesorFormBean.listaP}" var="profe" style=" width:1000px">
+                    <f:facet name="header">
+                        <h:outputText value="Lista de Profesores Registrados " />
+                    </f:facet>
+                    <p:column headerText="Legajo Nº" style=" width:200px">
+                        <h:outputText value="#{profe.legajo}" />
+                    </p:column>
+
+                    <p:column headerText="Apellido y Nombres " style=" width:600px">
+                        <h:outputText value="#{profe.apellido} #{profe.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="Sexo">
+                        <h:outputText value="#{profe.sexo}" style=" width:300px"/>
+                    </p:column>
+                </p:dataTable> 
+                </p:dialog>             
+
+
+
+
+
+
+            </p:fieldset>
+        </h:form>
+
+
+
+    </h:body>
+</html>
