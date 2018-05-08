@@ -5,10 +5,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title></title>
+        <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+        <h:form>
+            <p:outputLabel value="Lista de puntos"/><br/>
+            <h:commandLink value="punto 01" action="tp4_Pto01_Conversor?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+            <br/>
+            <h:commandLink value="punto 02" action="tp4_Pto02_Numeros?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+            <br/>
+            <h:commandLink value="punto 03" action="tp4_Pto03_Calculadora?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+            <br/>
+            <h:commandLink value="punto 04" action="tp4_Pto04_Ahorcado?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+            <br/>
+            <h:commandLink value="punto 05" action="tp4_Pto05_Profesores?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+            <br/>
+            <h:commandLink value="punto 06" action="tp4_Pto06_Auto?faces-redirect=true" >
+                <f:ajax/>
+            </h:commandLink>
+        </h:form>
     </h:body>
 </html>
-
