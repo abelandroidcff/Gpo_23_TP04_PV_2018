@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package punto07.modelo.dominio;
+package aplicacion.punto07.modelo.dominio;
 
 import java.io.Serializable;
 
@@ -13,24 +13,10 @@ import java.io.Serializable;
  */
 public class Libro implements Serializable{
 
-    /**
-     * @return the autor
-     */
-    public String getAutor() {
-        return autor;
-    }
-
-    /**
-     * @param autor the autor to set
-     */
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
     private int isbn;
     private String titulo;
     private String autor;
-    private double precio;    
-    private int paisNacimiento;    
+    private double precio;        
 
     public Libro() {
     }
@@ -50,6 +36,20 @@ public class Libro implements Serializable{
         this.titulo = titulo;
     }
 
+    /**
+     * @return the autor
+     */
+    public String getAutor() {
+        return autor;
+    }
+
+    /**
+     * @param autor the autor to set
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    
     public double getPrecio() {
         return precio;
     }
@@ -64,21 +64,6 @@ public class Libro implements Serializable{
 
     public void setIsbn(int isbn) {
         this.isbn = isbn;
-    }
-
-    @Override
-    public String toString() {
-        return "ISBN: " + isbn +
-                " Titulo: " + titulo + 
-                " Precio: " + precio;
-    }
-
-    public int getPaisNacimiento() {
-        return paisNacimiento;
-    }
-
-    public void setPaisNacimiento(int paisNacimiento) {
-        this.paisNacimiento = paisNacimiento;
     }
     
 }

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registros de Libros</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlLibro" header="Lista de Libros"> 
+            <h:form id="frmLibro">
+                <h:panelGrid id="tblRectangulo" columns="2">            
+                    <p:outputLabel id="lblISBN" value="ISBN N°"/>
+                    <p:inputNumber id="txtISBN" decimalPlaces="0"
+                                   value="#{libroFormBean.libroBean.isbn}"/>
+
+                    <p:outputLabel id="lblTitulo" value="Título"/>
+                    <p:inputText id="txtTitulo"
+                                 value="#{libroFormBean.libroBean.titulo}"/>
+
+                    <p:outputLabel id="lblAutor" value="Autor"/>
+                    <p:selectOneMenu id="txtautor" value="#{libroFormBean.libroBean.autor}" label="autor" >                        
+                        <f:selectItem itemLabel="J.R.R. Tolkien" itemValue="J.R.R. Tolkien"/>
+                        <f:selectItem itemLabel="William Shakespiare" itemValue="William Shakespiare"/>
+                        <f:selectItem itemLabel="Alejandro Dumas" itemValue="Alejandro Dumas"/> 
+                        <f:selectItem itemLabel="Bram Stoker" itemValue="Bram Stoker"/> 
+                        <f:selectItem itemLabel="George Orwell" itemValue="George Orwell"/>
+                        <f:selectItem itemLabel="Miguel de Cervantes" itemValue="Miguel de Cervantes"/>
+                        <f:selectItem itemLabel="D.F.Sarmiento" itemValue="D.F.Sarmiento"/>
+                        <f:selectItem itemLabel="José Hernandez" itemValue="José Hernandez"/>
+                    </p:selectOneMenu>                                            
+                        
+                    <p:outputLabel id="lblPrecio" value="Precio"/>
+                    <p:inputNumber id="txtPrecio" symbol="$ "
+                                   value="#{libroFormBean.libroBean.precio}"/>
+                    
+                    <p:outputLabel/>
+                    <p:commandButton id="btnAgregar" value="Agregar"
+                                     actionListener="#{libroFormBean.agregarLibro()}"
+                                     update=":frmLista:tblLibros"/>                    
+                </h:panelGrid>
+            </h:form>
+            
+            <p:separator/>
+            <h:form id="frmBusqueda">
+                <p:panelGrid id="tblBusqueda" columns="3">
+                    <p:outputLabel id="lblBusqueda" value="Búsqueda" for="txtBusqueda"/>
+                    <p:inputText id="txtBusqueda" value="#{libroFormBean.libroABuscar}"/>
+                    <p:commandButton id="btnBuscar" value="Buscar"
+                                     actionListener="#{libroFormBean.buscarLibro()}"
+                                     update=":frmLista"/>
+                </p:panelGrid>
+            </h:form>
+            
+            <p:separator/>
+            <h:form id="frmLista">
+                <p:dataTable id="tblLibros" var="unlibro" value="#{libroFormBean.librosBean}">
+                    <p:column headerText="ISBN N°">
+                        <h:outputText value="#{unlibro.isbn}" />
+                    </p:column>
+
+                    <p:column headerText="TÍTULO">
+                        <h:outputText value="#{unlibro.titulo}" />
+                    </p:column>
+
+                    <p:column headerText="AUTOR">
+                        <h:outputText value="#{unlibro.autor}" />
+                    </p:column>
+
+                    <p:column headerText="PRECIO ($)">
+                        <h:outputText value="#{unlibro.precio}" />
+                    </p:column>                                        
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
